@@ -2,6 +2,8 @@
   "name": "emulgeator/server-superglobal-object-representation",
   "type": "library",
   "description": "A simple class which represents the $_SERVER super global array in PHP",
+  "homepage": "https://github.com/emulgeator/server_superglobal_object_representation",
+  "license": "MIT",
   "require": {
     "php": ">=7.2.0"
   },
