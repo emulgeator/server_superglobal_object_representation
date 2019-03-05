@@ -1,0 +1,31 @@
+{
+  "name": "emulgeator/server_superglobal_object_representation",
+  "type": "library",
+  "description": "A simple class which represents the $_SERVER super global array in PHP",
+  "require": {
+    "php": ">=7.2.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Server\\": "src",
+      "Server\\Test\\": "test"
+    }
+  },
+  "repositories": {
+    "dev-package": {
+      "type": "path",
+      "url": "src/Server",
+      "options": {
+        "symlink": true
+      }
+    }
+  },
+  "authors": [
+    {
+      "name": "László Fodor (emul)"
+    }
+  ]
+}
