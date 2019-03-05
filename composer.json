@@ -12,8 +12,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Server\\": "src",
-      "Server\\Test\\": "test"
+      "Emulgeator\\Server\\": "src",
+      "Emulgeator\\Server\\Test\\": "test"
     }
   },
   "repositories": {
