@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Emu\Server\Test;
 
 
+use Emul\Server\Exception;
 use PHPUnit\Framework\TestCase;
 use Emul\Server\ServerData;
 
@@ -54,6 +55,49 @@ class ServerDataTest extends TestCase
             'int'          => [0,       false],
             'null'         => [null,    false],
         ];
+    }
+
+    public function arrayAccessHasProvider()
+    {
+        $server = ['exists' => 'value'];
+        return [
+            'key exists'         => [$server, 'exists', true],
+            'key does not exist' => [$server, 'does not exist', false],
+        ];
+    }
+
+    public function testArrayAccessGet_shouldReturnValuesByGivenKey()
+    {
+        $key   = 'key';
+        $value = 'value';
+
+        $server = new ServerData([$key => $value]);
+
+        $this->assertSame($value, $server[$key]);
+    }
+
+    /**
+     * @dataProvider arrayAccessHasProvider
+     */
+    public function testArrayAccessHas_shouldReturnTrueIfKeyExists(array $server, string $key, bool $expectedResult)
+    {
+        $server = new ServerData($server);
+
+        $this->assertSame($expectedResult, isset($server[$key]));
+    }
+
+    public function testArrayAccessSet_shouldThrowException()
+    {
+        $server = new ServerData([]);
+        $this->expectException(Exception::class);
+        $server['test'] = 'value';
+    }
+
+    public function testArrayAccessUnSet_shouldThrowException()
+    {
+        $server = new ServerData([]);
+        $this->expectException(Exception::class);
+        unset($server['test']);
     }
 
     /**

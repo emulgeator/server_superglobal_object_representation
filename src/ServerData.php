@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Emul\Server;
 
-class ServerData
+class ServerData implements \ArrayAccess
 {
     /** @var array */
     protected $server = [];
@@ -11,6 +11,33 @@ class ServerData
     public function __construct(array $server)
     {
         $this->server = $server;
+    }
+
+    public function offsetExists($offset)
+    {
+        return array_key_exists($offset, $this->server);
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->offsetExists($offset)
+            ? $this->server[$offset]
+            : null;
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        throw new Exception('You should not modify the Server content afterwards');
+    }
+
+    public function offsetUnset($offset)
+    {
+        throw new Exception('You should not modify the Server content afterwards');
+    }
+
+    public function toArray(): array
+    {
+        return $this->server;
     }
 
     public function getPhpSelf(): ?string
