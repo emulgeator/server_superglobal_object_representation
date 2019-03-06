@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Server;
+namespace Emul\Server;
 
-class Server
+class ServerData
 {
     /** @var array */
     protected $server = [];

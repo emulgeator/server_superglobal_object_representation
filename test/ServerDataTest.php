@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Server\Test;
+namespace Emu\Server\Test;
 
 
 use PHPUnit\Framework\TestCase;
-use Server\Server;
+use Emul\Server\ServerData;
 
-class ServerTest extends TestCase
+class ServerDataTest extends TestCase
 {
     public function stringProvider()
     {
@@ -61,7 +61,7 @@ class ServerTest extends TestCase
      */
     public function testGetPhpSelf_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['PHP_SELF' => $value]);
+        $server = new ServerData(['PHP_SELF' => $value]);
         $result = $server->getPhpSelf();
 
         $this->assertSame($expectedResult, $result);
@@ -72,7 +72,7 @@ class ServerTest extends TestCase
      */
     public function testGetArguments_shouldAlwaysReturnArray($value, array $expectedResult)
     {
-        $server = new Server(['argv' => $value]);
+        $server = new ServerData(['argv' => $value]);
         $result = $server->getArguments();
 
         $this->assertSame($expectedResult, $result);
@@ -83,7 +83,7 @@ class ServerTest extends TestCase
      */
     public function testGetArgumentCount_shouldReturnIntOrNull($value, ?int $expectedResult)
     {
-        $server = new Server(['argc' => $value]);
+        $server = new ServerData(['argc' => $value]);
         $result = $server->getArgumentCount();
 
         $this->assertSame($expectedResult, $result);
@@ -94,7 +94,7 @@ class ServerTest extends TestCase
      */
     public function testGetGatewayInterface_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['GATEWAY_INTERFACE' => $value]);
+        $server = new ServerData(['GATEWAY_INTERFACE' => $value]);
         $result = $server->getGatewayInterface();
 
         $this->assertSame($expectedResult, $result);
@@ -105,7 +105,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerAddress_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_ADDR' => $value]);
+        $server = new ServerData(['SERVER_ADDR' => $value]);
         $result = $server->getServerAddress();
 
         $this->assertSame($expectedResult, $result);
@@ -116,7 +116,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerName_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_NAME' => $value]);
+        $server = new ServerData(['SERVER_NAME' => $value]);
         $result = $server->getServerName();
 
         $this->assertSame($expectedResult, $result);
@@ -127,7 +127,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerSoftware_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_SOFTWARE' => $value]);
+        $server = new ServerData(['SERVER_SOFTWARE' => $value]);
         $result = $server->getServerSoftware();
 
         $this->assertSame($expectedResult, $result);
@@ -138,7 +138,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerProtocol_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_PROTOCOL' => $value]);
+        $server = new ServerData(['SERVER_PROTOCOL' => $value]);
         $result = $server->getServerProtocol();
 
         $this->assertSame($expectedResult, $result);
@@ -149,7 +149,7 @@ class ServerTest extends TestCase
      */
     public function testGetRequestMethod_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REQUEST_METHOD' => $value]);
+        $server = new ServerData(['REQUEST_METHOD' => $value]);
         $result = $server->getRequestMethod();
 
         $this->assertSame($expectedResult, $result);
@@ -160,7 +160,7 @@ class ServerTest extends TestCase
      */
     public function testGetRequestTime_shouldReturnIntOrNull($value, ?int $expectedResult)
     {
-        $server = new Server(['REQUEST_TIME' => $value]);
+        $server = new ServerData(['REQUEST_TIME' => $value]);
         $result = $server->getRequestTime();
 
         $this->assertSame($expectedResult, $result);
@@ -171,7 +171,7 @@ class ServerTest extends TestCase
      */
     public function testGetRequestTimeMs_shouldReturnFloatOrNull($value, ?float $expectedResult)
     {
-        $server = new Server(['REQUEST_TIME_FLOAT' => $value]);
+        $server = new ServerData(['REQUEST_TIME_FLOAT' => $value]);
         $result = $server->getRequestTimeMs();
 
         $this->assertSame($expectedResult, $result);
@@ -182,7 +182,7 @@ class ServerTest extends TestCase
      */
     public function testGetQueryString_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['QUERY_STRING' => $value]);
+        $server = new ServerData(['QUERY_STRING' => $value]);
         $result = $server->getQueryString();
 
         $this->assertSame($expectedResult, $result);
@@ -193,7 +193,7 @@ class ServerTest extends TestCase
      */
     public function testGetDocumentRoot_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['DOCUMENT_ROOT' => $value]);
+        $server = new ServerData(['DOCUMENT_ROOT' => $value]);
         $result = $server->getDocumentRoot();
 
         $this->assertSame($expectedResult, $result);
@@ -204,7 +204,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpAcceptHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_ACCEPT' => $value]);
+        $server = new ServerData(['HTTP_ACCEPT' => $value]);
         $result = $server->getHttpAcceptHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -215,7 +215,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpAcceptCharsetHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_ACCEPT_CHARSET' => $value]);
+        $server = new ServerData(['HTTP_ACCEPT_CHARSET' => $value]);
         $result = $server->getHttpAcceptCharsetHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -226,7 +226,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpAcceptEncodingHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_ACCEPT_ENCODING' => $value]);
+        $server = new ServerData(['HTTP_ACCEPT_ENCODING' => $value]);
         $result = $server->getHttpAcceptEncodingHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -237,7 +237,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpAcceptLanguageHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_ACCEPT_LANGUAGE' => $value]);
+        $server = new ServerData(['HTTP_ACCEPT_LANGUAGE' => $value]);
         $result = $server->getHttpAcceptLanguageHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -248,7 +248,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpConnectionHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_CONNECTION' => $value]);
+        $server = new ServerData(['HTTP_CONNECTION' => $value]);
         $result = $server->getHttpConnectionHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -259,7 +259,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpHostHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_HOST' => $value]);
+        $server = new ServerData(['HTTP_HOST' => $value]);
         $result = $server->getHttpHostHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -270,7 +270,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpRefererHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_REFERER' => $value]);
+        $server = new ServerData(['HTTP_REFERER' => $value]);
         $result = $server->getHttpRefererHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -281,7 +281,7 @@ class ServerTest extends TestCase
      */
     public function testGetHttpUserAgentHeader_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['HTTP_USER_AGENT' => $value]);
+        $server = new ServerData(['HTTP_USER_AGENT' => $value]);
         $result = $server->getHttpUserAgentHeader();
 
         $this->assertSame($expectedResult, $result);
@@ -292,7 +292,7 @@ class ServerTest extends TestCase
      */
     public function testIsHttps_shouldReturnBool($value, bool $expectedResult)
     {
-        $server = new Server(['HTTPS' => $value]);
+        $server = new ServerData(['HTTPS' => $value]);
         $result = $server->isHttps();
 
         $this->assertSame($expectedResult, $result);
@@ -303,7 +303,7 @@ class ServerTest extends TestCase
      */
     public function testGetRemoteAddress_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REMOTE_ADDR' => $value]);
+        $server = new ServerData(['REMOTE_ADDR' => $value]);
         $result = $server->getRemoteAddress();
 
         $this->assertSame($expectedResult, $result);
@@ -314,7 +314,7 @@ class ServerTest extends TestCase
      */
     public function testGetRemoteHost_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REMOTE_HOST' => $value]);
+        $server = new ServerData(['REMOTE_HOST' => $value]);
         $result = $server->getRemoteHost();
 
         $this->assertSame($expectedResult, $result);
@@ -325,7 +325,7 @@ class ServerTest extends TestCase
      */
     public function testGetRemotePort_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REMOTE_PORT' => $value]);
+        $server = new ServerData(['REMOTE_PORT' => $value]);
         $result = $server->getRemotePort();
 
         $this->assertSame($expectedResult, $result);
@@ -336,7 +336,7 @@ class ServerTest extends TestCase
      */
     public function testGetRemoteUser_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REMOTE_USER' => $value]);
+        $server = new ServerData(['REMOTE_USER' => $value]);
         $result = $server->getRemoteUser();
 
         $this->assertSame($expectedResult, $result);
@@ -347,7 +347,7 @@ class ServerTest extends TestCase
      */
     public function testGetRedirectRemoteUser_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REDIRECT_REMOTE_USER' => $value]);
+        $server = new ServerData(['REDIRECT_REMOTE_USER' => $value]);
         $result = $server->getRedirectRemoteUser();
 
         $this->assertSame($expectedResult, $result);
@@ -358,7 +358,7 @@ class ServerTest extends TestCase
      */
     public function testGetScriptFilename_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SCRIPT_FILENAME' => $value]);
+        $server = new ServerData(['SCRIPT_FILENAME' => $value]);
         $result = $server->getScriptFilename();
 
         $this->assertSame($expectedResult, $result);
@@ -369,7 +369,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerAdmin_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_ADMIN' => $value]);
+        $server = new ServerData(['SERVER_ADMIN' => $value]);
         $result = $server->getServerAdmin();
 
         $this->assertSame($expectedResult, $result);
@@ -380,7 +380,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerPort_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_PORT' => $value]);
+        $server = new ServerData(['SERVER_PORT' => $value]);
         $result = $server->getServerPort();
 
         $this->assertSame($expectedResult, $result);
@@ -391,7 +391,7 @@ class ServerTest extends TestCase
      */
     public function testGetServerSignature_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SERVER_SIGNATURE' => $value]);
+        $server = new ServerData(['SERVER_SIGNATURE' => $value]);
         $result = $server->getServerSignature();
 
         $this->assertSame($expectedResult, $result);
@@ -402,7 +402,7 @@ class ServerTest extends TestCase
      */
     public function testGetPathTranslated_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['PATH_TRANSLATED' => $value]);
+        $server = new ServerData(['PATH_TRANSLATED' => $value]);
         $result = $server->getPathTranslated();
 
         $this->assertSame($expectedResult, $result);
@@ -413,7 +413,7 @@ class ServerTest extends TestCase
      */
     public function testGetScriptName_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['SCRIPT_NAME' => $value]);
+        $server = new ServerData(['SCRIPT_NAME' => $value]);
         $result = $server->getScriptName();
 
         $this->assertSame($expectedResult, $result);
@@ -424,7 +424,7 @@ class ServerTest extends TestCase
      */
     public function testGetRequestUri_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['REQUEST_URI' => $value]);
+        $server = new ServerData(['REQUEST_URI' => $value]);
         $result = $server->getRequestUri();
 
         $this->assertSame($expectedResult, $result);
@@ -435,7 +435,7 @@ class ServerTest extends TestCase
      */
     public function testGetAuthenticationDigest_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['PHP_AUTH_DIGEST' => $value]);
+        $server = new ServerData(['PHP_AUTH_DIGEST' => $value]);
         $result = $server->getAuthenticationDigest();
 
         $this->assertSame($expectedResult, $result);
@@ -446,7 +446,7 @@ class ServerTest extends TestCase
      */
     public function testGetAuthenticationUser_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['PHP_AUTH_USER' => $value]);
+        $server = new ServerData(['PHP_AUTH_USER' => $value]);
         $result = $server->getAuthenticationUser();
 
         $this->assertSame($expectedResult, $result);
@@ -457,7 +457,7 @@ class ServerTest extends TestCase
      */
     public function testGetAuthenticationPassword_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['PHP_AUTH_PW' => $value]);
+        $server = new ServerData(['PHP_AUTH_PW' => $value]);
         $result = $server->getAuthenticationPassword();
 
         $this->assertSame($expectedResult, $result);
@@ -468,7 +468,7 @@ class ServerTest extends TestCase
      */
     public function testGetAuthenticationType_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['AUTH_TYPE' => $value]);
+        $server = new ServerData(['AUTH_TYPE' => $value]);
         $result = $server->getAuthenticationType();
 
         $this->assertSame($expectedResult, $result);
@@ -479,7 +479,7 @@ class ServerTest extends TestCase
      */
     public function testGetPathInfo_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['PATH_INFO' => $value]);
+        $server = new ServerData(['PATH_INFO' => $value]);
         $result = $server->getPathInfo();
 
         $this->assertSame($expectedResult, $result);
@@ -490,7 +490,7 @@ class ServerTest extends TestCase
      */
     public function testGetPathInfoOriginal_shouldReturnStringOrNull($value, ?string $expectedResult)
     {
-        $server = new Server(['ORIG_PATH_INFO' => $value]);
+        $server = new ServerData(['ORIG_PATH_INFO' => $value]);
         $result = $server->getPathInfoOriginal();
 
         $this->assertSame($expectedResult, $result);
